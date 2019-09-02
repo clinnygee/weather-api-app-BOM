@@ -85,6 +85,7 @@ class WeatherIcon extends React.Component {
             // style={{backgroundImage: this.createImageUrl()}}
             >
                 <i className={`wi ${this.getIconClassName(this.props.icon)}`}></i>
+                <p>{this.props.description}</p>
             </div>
         )
     }

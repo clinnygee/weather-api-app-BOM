@@ -1,6 +1,7 @@
 import React from 'react';
 import NoWeatherData from './NoWeatherData';
 import CurrentWeather from './CurrentWeather';
+import ForecastWeather from '../WeatherForecast/ForecastWeather'
 import './WeatherPanel.css';
 
 
@@ -14,6 +15,7 @@ class WeatherPanel extends React.Component {
             return(
                 <main className='weatherpanel-container'>
                     <CurrentWeather WeatherData={this.props.currentWeatherData}/>
+                    <ForecastWeather ForecastData={this.props.forecastWeatherData}/>
                 </main>
             )
         } else {

@@ -3,25 +3,32 @@
     padding: 0;
 }
 
+.night {
+  background-color: #1f5a80 !important;
+}
+
+.day {
+
+}
 .weatherpanel-current-container {
-    height: 55%;
-    max-height: 55%;
+    height: 38%;
+    max-height: 42%;
     /* max-width: 80vw; */
     background-color: #1977a6;
     color: #fff;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
 }
 
 .weatherpanel-container {
     height: 100vh;
-    background-color: #12346b;
+    background-color: #021f33;
 }
 
 .weatherpanel-current-location {
     height: 100%;
     display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr;
 }
 
 .weatherpanel-current-location-icon {
@@ -37,6 +44,75 @@
     
     font-weight: 500;
     font-size: 200px;
+    margin-top: 50%;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 600px){
+
+    .weatherpanel-current-container {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .weatherpanel-current-location {
+        width: 150px;
+    }
+    .weatherpanel-current-location-icon {
+        justify-content: start;
+        padding-left: 20%;
+    }
+    .weatherpanel-current-location-icon i {
+        font-size: 80px;
+        font-weight: 200;
+    }
+
+    .weatherpanel-current-temp-reading-degrees {
+        margin: 0;
+        margin-top: 12% !important;
+        font-size: 65px !important; 
+        font-weight: 50;
+
+        
+        
+    
+        
+    }
+
+    .weatherpanel-current-temp-reading {
+        justify-content: start !important;
+        padding-left: 10%;
+        
+    }
+
+    .weatherpanel-current-temp-reading-feels {
+        /* margin: 0; */
+        font-size: 12px !important; 
+        line-height: 1.2rem;
+        /* font-weight: 50; */
+
+        
+        
+    
+        
+    }
+
+    .weatherpanel-current-location-name div p {
+        font-size: 20px !important;
+        font-weight: 100;
+    }
+
+    .weatherpanel-current-location-name {
+        display: grid;
+        justify-content: center;
+        align-content: center; 
+        max-height: 100%;
+        width: 100%;
+        transform: translate(0%, 10%) !important; 
+    }
+
+    .weatherpanel-current-location-icon {
+        transform: translate(0%, -10%) !important;
+    }
 }
 .weatherpanel-current-temp-time-icon {
     font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif; 
@@ -45,7 +121,7 @@
 
 .weatherpanel-current-temp-time {
     padding-right: 20%;
-    font-size: 25px;
+    font-size: 10px;
     text-align: end;
     line-height: 1.2em;
 }
@@ -69,9 +145,13 @@
 
 
 .weatherpanel-current-temp-reading-degrees {
+    margin-top: 40%;
     margin: 0;
+    margin-bottom: 12px;
     font-size: 125px;
     font-weight: 50;
+
+    
 }
 
 .weatherpanel-current-temp-reading-feels {
@@ -95,5 +175,5 @@
     height: 100%;
     display: grid;
     /* grid-template-rows: minmax(0fr, 1fr) minmax(1fr, 1fr) minmax(2fr, 2fr); */
-    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr;
 }

@@ -4,6 +4,11 @@ import NavDefaultSearches from './NavDefaultSearches';
 
 
 class Navigation extends React.Component {
+
+    state = {
+        displayNav: true,
+    }
+    
     render(){
         return (
             <nav className='sidebar-nav'>

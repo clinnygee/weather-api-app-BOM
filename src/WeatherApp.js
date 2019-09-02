@@ -89,10 +89,11 @@ class WeatherApp extends React.Component {
 
     render(){
         return (
+            
             <div className='weatherapp-container'>
                 <Navigation onNavSearchClick={this.handleNavSearchClick} onDefaultCityClick={this.handleDefaultCityClick}/>
             
-                <WeatherPanel currentWeatherData={this.state.currentWeatherData} />
+                <WeatherPanel currentWeatherData={this.state.currentWeatherData} forecastWeatherData={this.state.forecastWeatherData}/>
             </div>
         )
     }

@@ -36,6 +36,14 @@ class CurrentWeather extends React.Component {
         return dateTime.getMinutes().toString().length > 1 ? dateTime.getMinutes() : '0'+dateTime.getMinutes();
     }
 
+    getbackgroundColorClass = (code) => {
+
+        const newCode = [...code];
+        const timeOfDayCode = newCode.pop();
+
+        return timeOfDayCode === 'd' ? 'day' : 'night';
+    }
+
     render(){
 
         const currentDateTime = new Date(this.props.WeatherData.dt * 1000);
@@ -47,7 +55,7 @@ class CurrentWeather extends React.Component {
         console.log(currentDateTime);
         return(
             
-            <div className='weatherpanel-current-container'>
+            <div className={`weatherpanel-current-container ${this.getbackgroundColorClass(this.props.WeatherData.weather[0].icon)}`}>
                 <div className='weatherpanel-current-location'>
                     <div className='weatherpanel-current-location-name'>
                         <div>
@@ -59,7 +67,7 @@ class CurrentWeather extends React.Component {
                     {/* <div className='weatherpanel-current-location-icon'>
                         
                     </div> */}
-                    <WeatherIcon icon={this.props.WeatherData.weather[0].icon} />
+                    <WeatherIcon icon={this.props.WeatherData.weather[0].icon} description={this.props.WeatherData.weather[0].description} />
                 </div>
                 <div className='weatherpanel-current-temp'>
                     <div>
@@ -71,7 +79,7 @@ class CurrentWeather extends React.Component {
                             {this.convertToCelcius(this.props.WeatherData.main.temp) + '\u00b0'} 
                             </p>
                             <p className='weatherpanel-current-temp-reading-feels'>
-                                this will house feels like
+                                1234567890123456
                             </p>
                             <p className='weatherpanel-current-temp-reading-feels'>
                                 {this.convertToHumanReadableDateTime(currentDateTime)}
@@ -79,11 +87,7 @@ class CurrentWeather extends React.Component {
                             
                         </div>
                     </div>
-                    <div className='weatherpanel-current-temp-time'>
-                        
-                        <p>{this.humanReadableTime(sunrise)}<span role="img" className='weatherpanel-current-temp-time-icon'>&#127749;</span></p>
-                        <p>{this.humanReadableTime(sunset)} <span role="img" className='weatherpanel-current-temp-time-icon'>&#127750;</span></p>
-                    </div>
+                    
                     
                 </div>
             </div>
