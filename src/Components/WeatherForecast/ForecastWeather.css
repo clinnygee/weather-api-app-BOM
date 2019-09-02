@@ -103,7 +103,7 @@
     margin-right: 10px; */
     padding-left: 10px;
     padding-right: 10px;
-    max-width: 100%;
+    max-width: 90%;
     height: 100%;
     grid-template-columns: 30% 30% 30% 30% 30%;
     grid-column-gap: 5%;
@@ -141,5 +141,7 @@
 }
 
 .forecast-container-card-rain {
+    text-align: center;
+    padding-top: 3px;
     border-top: 2px solid #d7dde0; 
 }

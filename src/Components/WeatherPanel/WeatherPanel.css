@@ -22,6 +22,7 @@
 
 .weatherpanel-container {
     height: 100vh;
+    max-width: 100vw;
     background-color: #021f33;
 }
 
@@ -48,10 +49,15 @@
     margin-bottom: 15px;
 }
 
+.dimmed {
+    opacity: 0.6 !important;
+}
+
 @media (max-width: 600px){
 
     .weatherpanel-current-container {
         grid-template-columns: 1fr 2fr;
+        max-width: 100vw !important;
     }
 
     .weatherpanel-current-location {
@@ -81,6 +87,8 @@
     .weatherpanel-current-temp-reading {
         justify-content: start !important;
         padding-left: 10%;
+        max-width: 90%;
+        overflow: hidden;
         
     }
 

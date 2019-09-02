@@ -17,7 +17,7 @@ class WeatherApp extends React.Component {
             location: 'Morayfield,au',
             currentWeatherData: null,
             forecastWeatherData: null,
-            displayNav: false,
+            displayNav: true,
         }
     };
 
@@ -29,10 +29,12 @@ class WeatherApp extends React.Component {
         // this.fetchWeeksWeather(this.state.location).then(weeksData => {
         //     this.setState({forecastWeatherData: weeksData});
         // })
+        const mobile = window.matchMedia('(max-width: 600px)');
 
-        console.log(this.state.currentWeatherData);
-
-        console.log(this.state.forecastWeatherData);
+        console.log(mobile.matches);
+        if(mobile.matches){
+            this.setState({displayNav: false});
+        }
     };
 
     fetchDaysWeather = async (location) => {
@@ -76,7 +78,9 @@ class WeatherApp extends React.Component {
     };
 
     handleWeatherDataUpdate = (current, weeks) => {
-        this.setState({currentWeatherData: Object.assign({}, current), forecastWeatherData: Object.assign({}, weeks)});
+
+        
+        this.setState({currentWeatherData: Object.assign({}, current), forecastWeatherData: Object.assign({}, weeks), displayNav: false});
 
         
     }
@@ -97,6 +101,13 @@ class WeatherApp extends React.Component {
         this.setState({displayNav: nextDisplay});
     }
 
+    handleOutsideNavClick = () => {
+        console.log('in handle OutsideNavClick')
+        if(this.state.displayNav){
+            this.setState({displayNav: false});
+        }
+    };
+
     render(){
         return (
             
@@ -106,7 +117,12 @@ class WeatherApp extends React.Component {
                 </Media>
                 <Navigation onNavSearchClick={this.handleNavSearchClick} onDefaultCityClick={this.handleDefaultCityClick} displayNav={this.state.displayNav}/>
             
-                <WeatherPanel currentWeatherData={this.state.currentWeatherData} forecastWeatherData={this.state.forecastWeatherData}/>
+                <WeatherPanel 
+                    currentWeatherData={this.state.currentWeatherData} 
+                    forecastWeatherData={this.state.forecastWeatherData}
+                    onOutsideNavClick={this.handleOutsideNavClick}
+                    dimmed={this.state.displayNav}
+                    />
             </div>
         )
     }
