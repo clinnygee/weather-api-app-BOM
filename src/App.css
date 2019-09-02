@@ -27,9 +27,9 @@ body {
   .weatherpanel-container {
     width: 100vw;
   }
-  .sidebar-nav {
+  /* .sidebar-nav {
     display: none;
-  }
+  } */
 }
 
 .sidebar-nav {

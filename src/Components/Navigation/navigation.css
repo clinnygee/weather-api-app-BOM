@@ -1,0 +1,158 @@
+.hamburger-menu {
+    position: fixed;
+    width: 100vw;
+    height: 40px;
+    padding: 5px 5px 5px 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.hamburger-menu-icon {
+    grid-column-start: 0;
+    grid-column-end: 1;
+    display: grid;
+    align-content: center;
+    
+}
+
+.hamburger-menu-radar {
+    grid-column-start: -3;
+    grid-column-end: -5; 
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.hamburger-menu-warnings {
+    grid-column-start: -1;
+    grid-column-end: -3;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    border-left: 2px solid black;
+    
+}
+
+.hamburger-menu-warnings-image {
+    width: 30px;
+    height: 30px;
+}
+
+
+.sidebar-nav {
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .sidebar-nav-item-large {
+    border: 1px solid #d7dde0;
+    height: 10%;
+    background-color: #98d6f5;
+    
+    
+  
+  }
+  
+  .sidebar-nav-item-small {
+    height: 5%;
+    border-top: 1px solid #d7dde0;
+    border-bottom: 1px solid #d7dde0;
+    display: grid;
+    align-content: center;
+    background-color: #e4eff5;
+    font-weight: 200;
+  }
+  
+  .sidebar-nav-header {
+    padding: 20px 0 0 10px;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(253, 253, 245);
+    line-height: 1.3em;
+    font-weight: 300;
+    font-size: 1.3em;
+    z-index: 1;
+  }
+  
+  .bold {
+    font-size: 0.7em;
+    font-weight: 500;
+  }
+  
+  .sidebar-nav-search {
+    width: 96%;
+    height: 70%;
+    display: grid;
+    
+  }
+  
+  .search-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    
+    align-items: center;
+    justify-items: center;
+  }
+  
+  .sidebar-nav-search-form {
+    display: grid;
+    grid-template-columns: 7fr 1fr;
+    /* margin: 0 2% 0 2%; */
+    
+    height: 100%;
+   
+    
+    min-height: 0;
+    
+    border: 1px solid rgb(184, 183, 183);
+    border-radius: 2px;
+    
+    
+    
+  
+  }
+  
+  .search-box {
+    border: 0;
+    background-color: #ffffff;
+    padding-left: 5px;
+  }
+  
+  .search-button {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    background-color: #fff;
+    padding-left: 10px;
+    
+    
+    border: 0px;
+  
+  }
+  
+  .search-button:hover {
+    background-color: rgba(226, 222, 222, 0.925);
+  }
+  
+  .search-icon {
+    width: 70%;
+    height: 25px;
+    align-self: center;
+    justify-self: center;
+    
+    
+  }
+  
+  .nav-default-search-city {
+    padding-left: 10px;
+  
+  }
+  
+  .default-city-name {
+  
+  }
+  
+  .default-city-arrow {
+    padding-right: 10px;
+    float: right;
+  }

@@ -1,6 +1,8 @@
 import React from 'react';
 import Navigation from './Components/Navigation/Navigation';
 import WeatherPanel from './Components/WeatherPanel/WeatherPanel';
+import HamburgerMenu from '../src/Components/Navigation/HamburgerMenu'
+import Media from 'react-media';
 
 
 class WeatherApp extends React.Component {
@@ -15,6 +17,7 @@ class WeatherApp extends React.Component {
             location: 'Morayfield,au',
             currentWeatherData: null,
             forecastWeatherData: null,
+            displayNav: false,
         }
     };
 
@@ -87,11 +90,21 @@ class WeatherApp extends React.Component {
         this.handleSearch(searchLocation);
     }
 
+    handleHamburgerIconClick = () => {
+
+        const nextDisplay = !this.state.displayNav;
+        console.log(nextDisplay);
+        this.setState({displayNav: nextDisplay});
+    }
+
     render(){
         return (
             
             <div className='weatherapp-container'>
-                <Navigation onNavSearchClick={this.handleNavSearchClick} onDefaultCityClick={this.handleDefaultCityClick}/>
+                <Media query={"(max-width: 600px)"}>
+                    <HamburgerMenu onHamburgerIconClick={this.handleHamburgerIconClick}/>
+                </Media>
+                <Navigation onNavSearchClick={this.handleNavSearchClick} onDefaultCityClick={this.handleDefaultCityClick} displayNav={this.state.displayNav}/>
             
                 <WeatherPanel currentWeatherData={this.state.currentWeatherData} forecastWeatherData={this.state.forecastWeatherData}/>
             </div>
