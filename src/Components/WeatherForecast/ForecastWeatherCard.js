@@ -2,12 +2,15 @@ import React from 'react';
 
 class ForecastWeatherCard extends React.Component {
 
+    convertToCelcius = (temp) => {
+        return (temp - 273.15).toFixed(1);
+    }
 
     render(){
         return (
             <div className='forecast-container-card'>
                 <div className='forecast-container-card-date'>
-                    <p>Tomorrow</p>
+                    <p>{this.props.day}</p>
                 </div>
                 <div className='forecast-container-card-icon'>
                     <p>
@@ -17,14 +20,14 @@ class ForecastWeatherCard extends React.Component {
                 </div>
                 <div className='forecast-container-card-temp'>
                     <span>
-                        12
+                        {this.convertToCelcius(this.props.low)}
                     </span>
                     <span>
-                        28
+                        {this.convertToCelcius(this.props.high)}
                     </span>
                 </div>
                 <div className='forecast-container-card-rain'>
-                    <p>8 - No Rain</p>
+                    <p>8 - {this.props.rain} % </p>
                 </div>
 
 
