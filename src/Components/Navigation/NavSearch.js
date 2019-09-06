@@ -32,7 +32,7 @@ class NavSearch extends React.Component {
                     </form>
                 </div>
                 <div className='sidebar-nav-currentlocation'>
-                    this will house current locaton button
+                    
                 </div>
                 
             </div>

@@ -148,7 +148,12 @@ class daysWeatherForecasts {
             }
             m = 0;
         }
-        return item;
+
+        return item ? item : '01d';
+
+        
+
+        
     }
 
     getHigh = () => {

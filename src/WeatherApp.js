@@ -39,7 +39,7 @@ class WeatherApp extends React.Component {
 
     fetchDaysWeather = async (location) => {
 
-        const getUrl = `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=2e8a17c6cc6b9d1b81c7ec3d9dc36412`;
+        const getUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=2e8a17c6cc6b9d1b81c7ec3d9dc36412`;
 
         const response = await fetch(getUrl);
 
@@ -49,7 +49,7 @@ class WeatherApp extends React.Component {
     };
 
     fetchWeeksWeather = async (location) => {
-        const getUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=2e8a17c6cc6b9d1b81c7ec3d9dc36412`;
+        const getUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=2e8a17c6cc6b9d1b81c7ec3d9dc36412`;
 
         const response = await fetch(getUrl);
 

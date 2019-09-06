@@ -21,6 +21,8 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "homepage": "https://clinnygee.github.io/weather-api-app-BOM",
+
   "browserslist": {
     "production": [
       ">0.2%",
@@ -31,7 +33,7 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-    "homepage": "https://github.com/clinnygee/weather-api-app-BOM"
+    ]
+    
   }
 }
