@@ -112,9 +112,9 @@ class WeatherApp extends React.Component {
         return (
             
             <div className='weatherapp-container'>
-                <Media query={"(max-width: 600px)"}>
+                {/* <Media query={"(max-width: 600px)"}> */}
                     <HamburgerMenu onHamburgerIconClick={this.handleHamburgerIconClick}/>
-                </Media>
+                {/* </Media> */}
                 <Navigation onNavSearchClick={this.handleNavSearchClick} onDefaultCityClick={this.handleDefaultCityClick} displayNav={this.state.displayNav}/>
             
                 <WeatherPanel 

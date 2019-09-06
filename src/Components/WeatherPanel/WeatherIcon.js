@@ -79,15 +79,22 @@ class WeatherIcon extends React.Component {
 
     render(){
 
-        
-        return (
-            <div className='weatherpanel-current-location-icon' 
-            // style={{backgroundImage: this.createImageUrl()}}
-            >
+        console.log(this.props.parent)
+
+        if(this.props.parent){
+            return (
                 <i className={`wi ${this.getIconClassName(this.props.icon)}`}></i>
-                <p>{this.props.description}</p>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div className='weatherpanel-current-location-icon' 
+                // style={{backgroundImage: this.createImageUrl()}}
+                >
+                    <i className={`wi ${this.getIconClassName(this.props.icon)}`}></i>
+                    <p>{this.props.description}</p>
+                </div>
+            )
+        }
     }
 }
 

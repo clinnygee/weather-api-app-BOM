@@ -1,4 +1,5 @@
 import React from 'react';
+import WeatherIcon from '../WeatherPanel/WeatherIcon'
 
 class ForecastWeatherCard extends React.Component {
 
@@ -14,7 +15,8 @@ class ForecastWeatherCard extends React.Component {
                 </div>
                 <div className='forecast-container-card-icon'>
                     <p>
-                        &#9788; 
+                        <WeatherIcon icon={this.props.icon} parent={'Card'}/>
+                        {/* &#9788;  */}
                     </p>
                     
                 </div>

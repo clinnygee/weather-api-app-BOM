@@ -18,7 +18,7 @@ class ForecastWeatherCards extends React.Component {
     }
 
     getDayName = (day) => {
-        const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const days = ['Sunday','Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
         return days[day.getDay()];
     }
@@ -30,7 +30,8 @@ class ForecastWeatherCards extends React.Component {
                 day={this.getDayTitle(forecast.day)}
                 high={forecast.getHigh()}
                 low={forecast.getLow()}
-                rain={forecast.getRainProb()}
+                rain={forecast.getRainProb().toFixed(1)}
+                icon={forecast.getWeatherIcon()}
             />
         ))
 

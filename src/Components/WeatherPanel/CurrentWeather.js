@@ -3,8 +3,26 @@ import WeatherIcon from './WeatherIcon';
 
 class CurrentWeather extends React.Component {
 
+    // accepts kelvins, returns celcius
     convertToCelcius = (temp) => {
         return (temp - 273.15).toFixed(1);
+    }
+
+    // accepts kelvins, return farhnheit
+    convertToFahrenheit = (temp) => {
+        return (temp - 273.15) * 9/5 + 32;
+    }
+    // accepts fahrenheit, and a relative humidity, returns a 'feels like' temp
+    calculateHeatIndex = (f, rh) => {
+
+        return (
+            (((-42.379 + (2.04901523 * f) + (10.14333127 * rh)
+            - (0.22475541 * f * rh) - (6.83783 * Math.pow(10, -3) * Math.pow(f, 2))
+            - (5.481717 * Math.pow(10, -2) * Math.pow(rh, 2)) + (1.22874 * Math.pow(10, -3) * Math.pow(f, 2) * rh)
+            + (8.5282 * Math.pow(10, -4) * f * Math.pow(rh, 2)) - (1.99 * Math.pow(10, -6) * Math.pow(f, 2) * Math.pow(rh, 2)))
+            // converting the above farhenheit temp, to celcius
+            -32) * 5/9).toFixed(1)
+        );
     }
 
     convertToHumanReadableDateTime = (dateTime) => {
@@ -79,7 +97,7 @@ class CurrentWeather extends React.Component {
                             {this.convertToCelcius(this.props.WeatherData.main.temp) + '\u00b0'} 
                             </p>
                             <p className='weatherpanel-current-temp-reading-feels'>
-                                1234567890123456
+                                Feels Like {this.calculateHeatIndex(this.convertToFahrenheit(this.props.WeatherData.main.temp), this.props.WeatherData.main.humidity) + '\u00b0'}
                             </p>
                             <p className='weatherpanel-current-temp-reading-feels'>
                                 {this.convertToHumanReadableDateTime(currentDateTime)}

@@ -33,7 +33,11 @@ class ForecastWeather extends React.Component {
             console.log(currentForecastsDate.getDate() - todaysDate);
             let index = currentForecastsDate.getDate() - todaysDate;
 
+            // f
             forecastObjects[index].addTemperature(forecast.main.temp);
+
+            forecastObjects[index].addIcon(forecast.weather[0].icon);
+            
 
             if(forecast.rain){
                 console.log(forecast.rain["3h"]);
@@ -107,6 +111,7 @@ class daysWeatherForecasts {
         this.day = day;
         this.temperatures = [];
         this.rain = [];
+        this.icons = [];
     }
 
     addTemperature = (temp) => {
@@ -115,6 +120,35 @@ class daysWeatherForecasts {
 
     addRain = (rain) => {
         this.rain.push(rain);
+    }
+
+    addIcon = (icon) => {
+        this.icons.push(icon);
+        console.log(`adding icon ${icon}`)
+    }
+
+    getWeatherIcon = () => {
+        // stores the amount of times, the most commonly occuring item occurs,
+        let mf = 1;
+        // keeps count of the occurances of the item at index i.
+        let m = 0;
+        // when m > mf, this value will store the icon code;
+        let item;
+
+        for(let i = 0; i < this.icons.length; i++){
+
+            for(let j = i; j < this.icons.length; j++){
+                if(this.icons[i] === this.icons[j]){
+                    m++
+                }
+                if (m > mf){
+                    mf = m;
+                    item = this.icons[i];
+                }
+            }
+            m = 0;
+        }
+        return item;
     }
 
     getHigh = () => {
