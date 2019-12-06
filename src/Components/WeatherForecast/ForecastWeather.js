@@ -1,6 +1,9 @@
 import React from 'react';
 import ForecastWeatherCards from './ForecastWeatherCards';
 import './ForecastWeather.css'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faArrowAltCircleUp} from '@fortawesome/free-solid-svg-icons';
+import {faTint} from '@fortawesome/free-solid-svg-icons';
 
 class ForecastWeather extends React.Component {
 
@@ -62,12 +65,21 @@ class ForecastWeather extends React.Component {
     }
 
     render(){
+
+        console.log(this.props.ForecastData)
         
         const dailyForecasts=this.createForecastObjects(this.props.ForecastData);
+
+        const currentWeather = this.props.ForecastData.list[0];
+
+        console.log(currentWeather);
 
 
         return (
             // this should be an entirely new component, which as props will recieve tonights low, and tomorrows high
+            <React.Fragment>
+
+            
             <div className='forecast-container'>
                 <div className='forecast-container-first'>
                     <div className='tonight-tomorrow'>
@@ -86,8 +98,10 @@ class ForecastWeather extends React.Component {
                     </div>
                     <div className= 'current-weather-extras'>
                         <div className='current-weather-extras-content'>
-                            <p>8-- CALM 0 <span className='alt-color'>km/h</span></p>
-                            <p>8-- 88% <span className='alt-color'>humidity </span></p>
+                            <WindSpeed wind={currentWeather.wind}/>
+                            {/* <p>8-- CALM 0 <span className='alt-color'>km/h</span></p> */}
+                            <Humidity humidity={currentWeather.main.humidity}/>
+                            {/* <p>8-- 88% <span className='alt-color'>humidity </span></p> */}
                             <p>&#128167; 0.2mm <span className='alt-color'>since 9 am</span></p>
                         </div>
                     </div>
@@ -99,10 +113,60 @@ class ForecastWeather extends React.Component {
                     */}
                     <ForecastWeatherCards dailyForecasts={dailyForecasts}/>
                 </div>
+                
             </div>
+            
+            </React.Fragment>
         )
     }
+};
+
+const Humidity = (props) => {
+
+    return (
+    <p><FontAwesomeIcon icon={faTint}/> {props.humidity}% <span className='alt-color'>humidity </span></p>
+    )
 }
+
+const WindSpeed = (props) => {
+
+    const direction = (angle) => {
+
+        const degrees = parseFloat(angle);
+        let direction = '';
+        if(degrees >= 0 && degrees < 30){
+            direction = 'N';
+        } else if (degrees >= 30 && degrees < 60){
+            direction = 'NE';
+        } else if (degrees >= 60 && degrees < 120){
+            direction ='E';
+        } else if (degrees >= 120 && degrees < 150){
+            direction = 'SE';
+        } else if (degrees >= 150 && degrees < 210){
+            direction ='S'
+        } else if (degrees >= 210 && degrees < 240){
+            direction = 'SW'
+        } else if (degrees >= 240 && degrees < 300){
+            direction ='W';
+        } else if (degrees >= 300 && degrees < 330){
+            direction = 'NW';
+        } else {
+            direction = 'N';
+        };
+        console.log(degrees)
+        console.log(direction)
+        return direction;
+    }
+
+    return (
+        // for the directed arrow, a FontAwesomeIcon will be used, it will be within a span that will have one of 8 classes on it for the 8 rotates.
+        // props.wind.speed * 3.6, we want km/h, default measurement is metres/second 60*60/1000 is 3.6
+        <p><span className={direction(props.wind.deg)}><FontAwesomeIcon icon={faArrowAltCircleUp}/></span> 
+            <span className='alt-color'> {direction(props.wind.deg)} {(props.wind.speed * 3.6).toFixed(1)} KM/H</span></p>
+    )
+};
+
+// when this class is created, if it is late in the day. this.temperatures becomes an empty array. wtf? this leads to an infinity bug
 
 class daysWeatherForecasts {
 
@@ -157,11 +221,14 @@ class daysWeatherForecasts {
     }
 
     getHigh = () => {
+        console.log(this.temperatures)
         console.log(Math.max(...this.temperatures))
         return Math.max(...this.temperatures);
     };
 
     getLow = () => {
+        console.log(this.temperatures.length)
+        console.log(...this.temperatures)
         console.log(Math.min(...this.temperatures))
         return Math.min(...this.temperatures);
     }

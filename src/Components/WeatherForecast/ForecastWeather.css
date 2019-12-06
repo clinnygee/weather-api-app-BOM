@@ -166,3 +166,46 @@
 .forecast-container-card-icon i {
     font-size: 50px !important;
 }
+
+.rain-icon {
+    color: #03dbfc;
+    opacity: 0.5;
+}
+
+.N {
+
+}
+
+.NE svg {
+    transform: rotate(45deg);
+}
+
+.E svg {
+    transform: rotate(90deg);
+}
+
+.SE svg {
+    transform: rotate(135deg);
+}
+
+.S svg {
+    transform: rotate(180deg);
+}
+
+.SW svg {
+    transform: rotate(225deg);
+}
+
+.W svg{
+    transform: rotate(270deg);
+}
+
+.NW svg {
+    transform: rotate(315deg);
+}
+
+.timeline-container {
+    width: 100vw;
+    height: 300px;
+    background-color: #fff;
+}
