@@ -6,7 +6,7 @@ class WeatherIcon extends React.Component {
 
     getIconClassName = (iconCode) => {
 
-        console.log(iconCode);
+        // console.log(iconCode);
         
         const iconCodeCopy = [...iconCode];
 
@@ -16,7 +16,7 @@ class WeatherIcon extends React.Component {
 
     getTimeOfDayClass = (iconCode) => {
 
-        console.log(iconCode)
+        // console.log(iconCode)
         
         const timeOfDayCode = iconCode.pop();
 

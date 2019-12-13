@@ -5,6 +5,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowAltCircleUp} from '@fortawesome/free-solid-svg-icons';
 import {faTint} from '@fortawesome/free-solid-svg-icons';
 
+// this is on the git branch, geolocation
+
 class ForecastWeather extends React.Component {
 
     getTonightsForecast = () => {
@@ -23,9 +25,9 @@ class ForecastWeather extends React.Component {
 
         const today = new Date();
 
-        console.log(today);
+        // console.log(today);
 
-        console.log(allForecasts);
+        // console.log(allForecasts);
 
         const todaysDate = today.getDate();
 
@@ -33,7 +35,7 @@ class ForecastWeather extends React.Component {
 
         allForecasts.list.forEach((forecast) => {
             let currentForecastsDate = new Date(forecast.dt * 1000);
-            console.log(currentForecastsDate.getDate() - todaysDate);
+            // console.log(currentForecastsDate.getDate() - todaysDate);
             let index = currentForecastsDate.getDate() - todaysDate;
 
             // f
@@ -66,13 +68,13 @@ class ForecastWeather extends React.Component {
 
     render(){
 
-        console.log(this.props.ForecastData)
+        // console.log(this.props.ForecastData)
         
         const dailyForecasts=this.createForecastObjects(this.props.ForecastData);
 
         const currentWeather = this.props.ForecastData.list[0];
 
-        console.log(currentWeather);
+        // console.log(currentWeather);
 
 
         return (
@@ -102,7 +104,8 @@ class ForecastWeather extends React.Component {
                             {/* <p>8-- CALM 0 <span className='alt-color'>km/h</span></p> */}
                             <Humidity humidity={currentWeather.main.humidity}/>
                             {/* <p>8-- 88% <span className='alt-color'>humidity </span></p> */}
-                            <p>&#128167; 0.2mm <span className='alt-color'>since 9 am</span></p>
+                            <RainHistory rain={currentWeather.rain ? currentWeather.rain["3h"] : 0} dateTime={currentWeather.dt} />
+                            {/* // <p>&#128167; 0.2mm <span className='alt-color'>since 9 am</span></p> */}
                         </div>
                     </div>
                 </div>
@@ -120,6 +123,19 @@ class ForecastWeather extends React.Component {
         )
     }
 };
+
+const RainHistory = (props) => {
+
+    const getForecastTime = (datetime) => {
+
+    }
+
+    return (
+        // This needs to return the amount of rain over the last 3 hours. Need to recieve the DT of the forecast to
+        // be able to display X amount of mms since X time
+        <p>&#128167; {props.rain.toFixed(1)}mm <span className='alt-color'>since 9 am</span></p>
+    )
+}
 
 const Humidity = (props) => {
 
@@ -153,8 +169,8 @@ const WindSpeed = (props) => {
         } else {
             direction = 'N';
         };
-        console.log(degrees)
-        console.log(direction)
+        // console.log(degrees)
+        // console.log(direction)
         return direction;
     }
 
@@ -188,7 +204,7 @@ class daysWeatherForecasts {
 
     addIcon = (icon) => {
         this.icons.push(icon);
-        console.log(`adding icon ${icon}`)
+        // console.log(`adding icon ${icon}`)
     }
 
     getWeatherIcon = () => {
@@ -221,15 +237,15 @@ class daysWeatherForecasts {
     }
 
     getHigh = () => {
-        console.log(this.temperatures)
-        console.log(Math.max(...this.temperatures))
+        // console.log(this.temperatures)
+        // console.log(Math.max(...this.temperatures))
         return Math.max(...this.temperatures);
     };
 
     getLow = () => {
-        console.log(this.temperatures.length)
-        console.log(...this.temperatures)
-        console.log(Math.min(...this.temperatures))
+        // console.log(this.temperatures.length)
+        // console.log(...this.temperatures)
+        // console.log(Math.min(...this.temperatures))
         return Math.min(...this.temperatures);
     }
 
@@ -237,10 +253,13 @@ class daysWeatherForecasts {
         if(this.rain.length === 0){
             return 0;
         } else {
-            let sum = 0;
-            this.rain.forEach(value => sum += value)
+            let max = 0;
+            this.rain.forEach(value => {if(value > max){max = value}});
 
-            return (sum / this.rain.length) * 100;
+            console.log('total prob of rain: ' + max);
+            console.log('rain entries: ' + this.rain.length);
+
+            return max * 100;
         }
     }
 

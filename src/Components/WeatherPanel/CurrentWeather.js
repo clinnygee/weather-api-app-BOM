@@ -42,17 +42,17 @@ class CurrentWeather extends React.Component {
         const month = dateTime.getMonth();
 
         return months[month];
-    }
+    };
     // if .getMinutes() is < 10, it returns say 8 instead of 08
     humanReadableTime = (dateTime) => {
         
         return `${dateTime.getHours()}:${this.humanReadableMinutes(dateTime)}`;
-    }
+    };
 
     humanReadableMinutes = (dateTime) => {
         
         return dateTime.getMinutes().toString().length > 1 ? dateTime.getMinutes() : '0'+dateTime.getMinutes();
-    }
+    };
 
     getbackgroundColorClass = (code) => {
 
@@ -60,7 +60,7 @@ class CurrentWeather extends React.Component {
         const timeOfDayCode = newCode.pop();
 
         return timeOfDayCode === 'd' ? 'day' : 'night';
-    }
+    };
 
     render(){
 
