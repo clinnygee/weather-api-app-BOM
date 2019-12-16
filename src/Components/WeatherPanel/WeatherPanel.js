@@ -2,6 +2,7 @@ import React from 'react';
 import NoWeatherData from './NoWeatherData';
 import CurrentWeather from './CurrentWeather';
 import ForecastWeather from '../WeatherForecast/ForecastWeather'
+import Map from '../Maps/Map';
 import './WeatherPanel.css';
 
 
@@ -26,6 +27,7 @@ class WeatherPanel extends React.Component {
                 <main className={`weatherpanel-container ${this.getDisplayClass(this.props.dimmed)}`} onClick={this.handleOutsideNavClick}>
                     <CurrentWeather WeatherData={this.props.currentWeatherData}/>
                     <ForecastWeather ForecastData={this.props.forecastWeatherData}/>
+                    <Map />
                 </main>
             )
         } else {

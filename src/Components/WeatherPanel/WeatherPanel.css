@@ -11,20 +11,21 @@
 
 }
 .weatherpanel-current-container {
-    height: 38%;
-    max-height: 42%;
+    height: 38vh;
+    max-height: 42vh;
     /* max-width: 80vw; */
-    background-color: #1977a6;
+    background-color: #1178ab;
     color: #fff;
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
 
 .weatherpanel-container {
-    height: 100vh;
+    height: 250vh;
     max-width: 100vw;
     min-width: 100vw;
-    background-color: #021f33;
+    background-color: #0c567a;
+    margin-top: 20px;
 }
 
 .weatherpanel-current-location {
@@ -119,6 +120,8 @@
         transform: translate(0%, 10%) !important; 
     }
 
+    
+
     .weatherpanel-current-location-icon {
         transform: translate(0%, -10%) !important;
     }
@@ -178,6 +181,7 @@
 .weatherpanel-current-location-name div p {
     font-size: 50px;
     font-weight: 100;
+    /* z-index: 100; */
 }
 
 .weatherpanel-current-temp {

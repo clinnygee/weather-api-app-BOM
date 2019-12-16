@@ -7,6 +7,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     color: #fff;
+    background-color: #1977a6;
 }
 
 .hamburger-menu-icon {

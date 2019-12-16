@@ -116,6 +116,7 @@ class ForecastWeather extends React.Component {
                     */}
                     <ForecastWeatherCards dailyForecasts={dailyForecasts}/>
                 </div>
+                <ThreeHourlyForecastPanel forecasts={this.props.ForecastData}/>
                 
             </div>
             
@@ -173,13 +174,22 @@ const WindSpeed = (props) => {
         // console.log(direction)
         return direction;
     }
-
+    if(props.threeHourly){
+        return (
+            <React.Fragment>
+                <p>{direction(props.wind.deg)}</p>
+                <p><span className={direction(props.wind.deg)}><FontAwesomeIcon icon={faArrowAltCircleUp}/></span></p>
+                <p>{(props.wind.speed * 3.6).toFixed(0)} km/h</p>
+            </React.Fragment>
+            
+        )
+    } else {
     return (
         // for the directed arrow, a FontAwesomeIcon will be used, it will be within a span that will have one of 8 classes on it for the 8 rotates.
         // props.wind.speed * 3.6, we want km/h, default measurement is metres/second 60*60/1000 is 3.6
         <p><span className={direction(props.wind.deg)}><FontAwesomeIcon icon={faArrowAltCircleUp}/></span> 
             <span className='alt-color'> {direction(props.wind.deg)} {(props.wind.speed * 3.6).toFixed(1)} KM/H</span></p>
-    )
+    )}
 };
 
 // when this class is created, if it is late in the day. this.temperatures becomes an empty array. wtf? this leads to an infinity bug
@@ -263,6 +273,68 @@ class daysWeatherForecasts {
         }
     }
 
+};
+
+const ThreeHourlyForecastPanel = (props) => {
+
+    console.log(props.forecasts.list.slice(0, 8))
+
+    const forecasts = props.forecasts.list.slice(0,8);
+
+    console.log(forecasts)
+
+    const threeHourlyForecast = forecasts.map(forecast => (
+        <ThreeHourlyForecast forecast={forecast}/>
+    ))
+    // a function is ran here, that grabs the 8 readings that will be displayed
+    return(
+        <div className='forecast-container-third'>
+            <div className='forecast-container-third-title'><p>Weather for the next 24 hours</p></div>
+            <div className='forecast-container-third-readings'>
+                {threeHourlyForecast}
+            </div>
+        </div>
+    )
+};
+
+const ThreeHourlyForecast = (props) => {
+    // recieves a forecast, returns what will be displayed in the scrollable 24 hour forecast.0
+
+    const convertToCelcius = (temp) => {
+        return (temp - 273.15).toFixed(1);
+    }
+
+    const humanReadableTime = (dateTime) => {
+        
+        return `${dateTime.getHours()}:${humanReadableMinutes(dateTime)}`;
+    };
+
+    const humanReadableMinutes = (dateTime) => {
+        
+        return dateTime.getMinutes().toString().length > 1 ? dateTime.getMinutes() : '0'+dateTime.getMinutes();
+    };
+
+    const dateTime = new Date(props.forecast.dt * 1000);
+
+    console.log(dateTime);
+
+    return (
+        <div className='forecast-container-third-reading'>
+            <div className='heading'>
+                <p>{humanReadableTime(dateTime)}</p>
+            </div>
+            <div className='temp'>
+                <p>{convertToCelcius(props.forecast.main.temp)} {'\u00b0'} C</p>
+                
+            </div>
+            <div className='wind'>
+                <WindSpeed wind={props.forecast.wind} threeHourly={true}/>
+            </div>
+            <div>
+
+            </div>
+        </div>
+    )
 }
 
 export default ForecastWeather;

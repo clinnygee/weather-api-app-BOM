@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from './Components/Navigation/Navigation';
 import WeatherPanel from './Components/WeatherPanel/WeatherPanel';
 import HamburgerMenu from '../src/Components/Navigation/HamburgerMenu'
+import Map from './Components/Maps/Map';
 import Media from 'react-media';
 
 
@@ -18,6 +19,8 @@ class WeatherApp extends React.Component {
             currentWeatherData: null,
             forecastWeatherData: null,
             displayNav: true,
+            geolocation: null,
+            apiKey: '2e8a17c6cc6b9d1b81c7ec3d9dc36412'
         }
     };
 
@@ -34,12 +37,52 @@ class WeatherApp extends React.Component {
         console.log(mobile.matches);
         if(mobile.matches){
             this.setState({displayNav: false});
-        }
+        };
+
+        navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationFailure);
     };
+
+    geolocationSuccess = (pos) => {
+
+        console.log(pos);
+
+        const geolocation = pos.coords;
+
+        console.log(geolocation.latitude.toFixed(0));
+
+        this.setState({geolocation: {lat: geolocation.latitude.toFixed(5), lon: geolocation.longitude.toFixed(5)}}, () => {this.geolocationDataFetch()});
+
+        
+
+    };
+
+    geolocationFailure = (err) => {
+        console.log(err);
+    };
+
+    geolocationDataFetch = async () => {
+
+        const lat = this.state.geolocation.lat;
+        const lon= this.state.geolocation.lon;
+
+        const currentUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=9fe564bca63752159bb51775d9a2e5b0`;
+        const forecastUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&APPID=9fe564bca63752159bb51775d9a2e5b0`;
+
+        const currentResponse = await fetch(currentUrl);
+        const forecastResponse = await fetch(forecastUrl);
+
+        const daysWeather = await currentResponse.json();
+        const weeksWeather = await forecastResponse.json();
+
+        this.handleWeatherDataUpdate(daysWeather, weeksWeather);
+    }
 
     fetchDaysWeather = async (location) => {
 
         const getUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=2e8a17c6cc6b9d1b81c7ec3d9dc36412`;
+
+        // https://api.openweathermap.org/data/2.5/weather?q=$Morayfield,Au&APPID=2e8a17c6cc6b9d1b81c7ec3d9dc36412
+        // https://api.openweathermap.org/data/2.5/weather?lat=-27&lon=153&APPID=2e8a17c6cc6b9d1b81c7ec3d9dc36412`
 
         const response = await fetch(getUrl);
 
@@ -123,6 +166,9 @@ class WeatherApp extends React.Component {
                     onOutsideNavClick={this.handleOutsideNavClick}
                     dimmed={this.state.displayNav}
                     />
+                <div className='footer'>
+                    <p>www.bom.gov.au</p>
+                </div>
             </div>
         )
     }
