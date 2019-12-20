@@ -167,7 +167,8 @@ class WeatherApp extends React.Component {
                     dimmed={this.state.displayNav}
                     />
                 <div className='footer'>
-                    <p>www.bom.gov.au</p>
+                    <a href='https://github.com/clinnygee/weather-api-app-BOM'><p>https://github.com/clinnygee/weather-api-app-BOM</p></a>
+                    
                 </div>
             </div>
         )

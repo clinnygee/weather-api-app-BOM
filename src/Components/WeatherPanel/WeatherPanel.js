@@ -5,8 +5,7 @@ import ForecastWeather from '../WeatherForecast/ForecastWeather'
 import Map from '../Maps/Map';
 import './WeatherPanel.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTint} from '@fortawesome/free-solid-svg-icons'
-import {faGithubSquare} from '@fortawesome/free-solid-svg-icons'
+
 
 
 class WeatherPanel extends React.Component {
@@ -30,10 +29,8 @@ class WeatherPanel extends React.Component {
                 <main className={`weatherpanel-container ${this.getDisplayClass(this.props.dimmed)}`} onClick={this.handleOutsideNavClick}>
                     <CurrentWeather WeatherData={this.props.currentWeatherData}/>
                     <ForecastWeather ForecastData={this.props.forecastWeatherData}/>
-                    <Map />
-                    <div className='github-container'>
-                        <FontAwesomeIcon icon={faGithubSquare}/>
-                    </div>
+                    <Map lat={this.props.currentWeatherData.coord.lat} lng={this.props.currentWeatherData.coord.lon}/>
+                    <GitHub />
                 </main>
             )
         } else {
@@ -43,6 +40,18 @@ class WeatherPanel extends React.Component {
         }
         
     }
+};
+
+const GitHub = () => {
+
+    return (
+        <div className='github-container'>
+            <div className='github-container-content'>
+                <a href='https://github.com/clinnygee/weather-api-app-BOM'><p><FontAwesomeIcon icon={['fab', 'github']}/></p></a>                
+                <p>Check out the source on GitHub!</p>
+            </div>            
+        </div>
+    )
 }
 
 export default WeatherPanel;

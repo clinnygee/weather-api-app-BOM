@@ -190,3 +190,26 @@
     /* grid-template-rows: minmax(0fr, 1fr) minmax(1fr, 1fr) minmax(2fr, 2fr); */
     grid-template-rows: 1fr 2fr;
 }
+
+.github-container {
+    width: 100vw;
+    height: 36vh;
+    display: grid;
+}
+
+.github-container-content {
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    color: #fff !important;
+    line-height: 3em;
+}
+
+.github-container-content p  svg {
+    font-size: 6em;
+}
+
+.github-container-content a {
+    color: #fff;
+}
+

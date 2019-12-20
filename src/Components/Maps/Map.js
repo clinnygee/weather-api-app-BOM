@@ -22,7 +22,7 @@ class Map extends React.Component {
                 <div className='map-container-content'>
                     <GoogleMapReact
                         bootstrapURLKeys={{key: 'AIzaSyDaqXDtwm3M51qPezZ-Ydq_CXpo8PHYV8o'}}
-                        defaultCenter={this.state.center}
+                        defaultCenter={{lat: this.props.lat, lng: this.props.lng}}
                         defaultZoom={this.state.zoom}
                     />
                 </div>
