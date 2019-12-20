@@ -65,8 +65,8 @@ class WeatherApp extends React.Component {
         const lat = this.state.geolocation.lat;
         const lon= this.state.geolocation.lon;
 
-        const currentUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=9fe564bca63752159bb51775d9a2e5b0`;
-        const forecastUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&APPID=9fe564bca63752159bb51775d9a2e5b0`;
+        const currentUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=9fe564bca63752159bb51775d9a2e5b0`;
+        const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&APPID=9fe564bca63752159bb51775d9a2e5b0`;
 
         const currentResponse = await fetch(currentUrl);
         const forecastResponse = await fetch(forecastUrl);
