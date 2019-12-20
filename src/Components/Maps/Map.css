@@ -2,4 +2,21 @@
     width: 100vw;
     height: 80vh;
     background-color: #fff;
+    display: grid;
+    grid-template-rows: 1fr 8fr;
+    padding-top: 50px;
+    justify-items: center;
+}
+
+.map-container-header {
+    width: 90%;
+    height: 10%;
+    text-align: center;
+}
+
+
+.map-container-content {
+    width: 90%;
+    height: 80%;
+    background-color: red;
 }

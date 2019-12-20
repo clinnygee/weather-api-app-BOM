@@ -4,6 +4,9 @@ import CurrentWeather from './CurrentWeather';
 import ForecastWeather from '../WeatherForecast/ForecastWeather'
 import Map from '../Maps/Map';
 import './WeatherPanel.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faTint} from '@fortawesome/free-solid-svg-icons'
+import {faGithubSquare} from '@fortawesome/free-solid-svg-icons'
 
 
 class WeatherPanel extends React.Component {
@@ -28,6 +31,9 @@ class WeatherPanel extends React.Component {
                     <CurrentWeather WeatherData={this.props.currentWeatherData}/>
                     <ForecastWeather ForecastData={this.props.forecastWeatherData}/>
                     <Map />
+                    <div className='github-container'>
+                        <FontAwesomeIcon icon={faGithubSquare}/>
+                    </div>
                 </main>
             )
         } else {
