@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/weather-api-app-BOM/static/css/main.f7775dbd.chunk.css",
+    "main.js": "/weather-api-app-BOM/static/js/main.62d704ad.chunk.js",
+    "main.js.map": "/weather-api-app-BOM/static/js/main.62d704ad.chunk.js.map",
+    "runtime-main.js": "/weather-api-app-BOM/static/js/runtime-main.444c6db7.js",
+    "runtime-main.js.map": "/weather-api-app-BOM/static/js/runtime-main.444c6db7.js.map",
+    "static/js/2.2c71f13e.chunk.js": "/weather-api-app-BOM/static/js/2.2c71f13e.chunk.js",
+    "static/js/2.2c71f13e.chunk.js.map": "/weather-api-app-BOM/static/js/2.2c71f13e.chunk.js.map",
+    "index.html": "/weather-api-app-BOM/index.html",
+    "precache-manifest.962ffd9474fe1ac19c22b153bc3951a0.js": "/weather-api-app-BOM/precache-manifest.962ffd9474fe1ac19c22b153bc3951a0.js",
+    "service-worker.js": "/weather-api-app-BOM/service-worker.js",
+    "static/css/main.f7775dbd.chunk.css.map": "/weather-api-app-BOM/static/css/main.f7775dbd.chunk.css.map",
+    "static/js/2.2c71f13e.chunk.js.LICENSE": "/weather-api-app-BOM/static/js/2.2c71f13e.chunk.js.LICENSE",
+    "static/media/weather-icons.css": "/weather-api-app-BOM/static/media/weathericons-regular-webfont.ecaf8b48.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.444c6db7.js",
+    "static/js/2.2c71f13e.chunk.js",
+    "static/css/main.f7775dbd.chunk.css",
+    "static/js/main.62d704ad.chunk.js"
+  ]
+}
