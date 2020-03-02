@@ -1,8 +1,8 @@
 import React from 'react';
-import Navigation from './Components/Navigation/Navigation';
-import WeatherPanel from './Components/WeatherPanel/WeatherPanel';
-import HamburgerMenu from '../src/Components/Navigation/HamburgerMenu'
-import Map from './Components/Maps/Map';
+import Navigation from '../Navigation';
+import WeatherPanel from '../WeatherPanel';
+import HamburgerMenu from '../Navigation/HamburgerMenu'
+import Map from '../Maps';
 import Media from 'react-media';
 
 
