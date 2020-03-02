@@ -17,7 +17,7 @@ class Map extends React.Component {
         return (
             <section className='map-container'>
                 <div className='map-container-header'>
-                    <p>Brisbane (Mt Stapylton) Radar</p>
+                    <p>Local traffic</p>
                 </div>
                 <div className='map-container-content'>
                     <GoogleMapReact

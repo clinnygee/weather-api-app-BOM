@@ -245,7 +245,7 @@
     grid-template-rows: 2fr 2fr 3fr 3fr;
 }
 
-.forecast-container-third-reading div {
+.forecast-container-third-reading .center {
     display: grid;
     align-content: center;
     justify-content: center;
@@ -279,3 +279,56 @@
     color: #383f4a;
     text-align: center;
 }
+
+.forecast-container-third-rain {
+    transform: translateX(50%);
+    /* display: grid;
+    align-items: flex-end !important; */
+    height: 100%;
+    width: 100%;
+    display: grid;
+    
+
+};
+
+.forecast-container-third-rain p {
+    font-size: 0.8em;
+    height: 10%;
+    color: #fff;
+    align-self: end;
+};
+
+.forecast-container-third-rain .blue {
+    width: 100%;
+    height: 50%;
+    background-color: blue;
+    /* display: inline-block; */
+    align-self: end;
+};
+
+.blue {
+    width: 100%;
+    height: 50%;
+    background-color: blue;
+    /* display: inline-block; */
+    align-self: end;
+}
+
+
+
+/* .forecast-container-third-rain-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33% 33% 33% 33% 33% 33%;
+}
+
+.forecast-container-third-rain-container-reading {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    align-items: end;
+};
+
+.forecast-container-third-rain-container-reading div {
+    height: 50%;
+    background-color: blue;
+} */

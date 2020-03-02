@@ -293,6 +293,15 @@ const ThreeHourlyForecastPanel = (props) => {
             <div className='forecast-container-third-readings'>
                 {threeHourlyForecast}
             </div>
+            {/* <div className='forecast-container-third-rain'>
+                <div className='forecast-container-third-rain-container'>
+                    <div className='forecast-container-third-rain-reading'>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+            </div> */}
         </div>
     )
 };
@@ -320,18 +329,21 @@ const ThreeHourlyForecast = (props) => {
 
     return (
         <div className='forecast-container-third-reading'>
-            <div className='heading'>
+            <div className='heading center'>
                 <p>{humanReadableTime(dateTime)}</p>
             </div>
-            <div className='temp'>
+            <div className='temp center'>
                 <p>{convertToCelcius(props.forecast.main.temp)} {'\u00b0'} C</p>
                 
             </div>
-            <div className='wind'>
+            <div className='wind center'>
                 <WindSpeed wind={props.forecast.wind} threeHourly={true}/>
             </div>
-            <div>
+            <div className='forecast-container-third-rain'>
+                {/* <p>50%</p> */}
+                <div className='blue' style={{width: '100%', height: '50%', backgroundColor: '#1977a6'}}>
 
+                </div>
             </div>
         </div>
     )
